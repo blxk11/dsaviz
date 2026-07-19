@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn Data Structures & Algorithms through stunning interactive visualizations. Paste your code and watch it come alive step-by-step.">
+  <title>DSA Visualizer — Learn Algorithms Visually</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/visualizer.css">
+</head>
+<body>
+
+  <!-- Background effects -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow--cyan"></div>
+  <div class="bg-glow bg-glow--purple"></div>
+
+  <!-- Mobile sidebar toggle -->
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">☰</button>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- ======== SIDEBAR ======== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__logo">
+      <div class="sidebar__logo-icon">⚡</div>
+      <span class="sidebar__logo-text">DSA Viz</span>
+    </div>
+    <nav class="sidebar__nav">
+      <div class="sidebar__section-label">Navigation</div>
+      <a class="nav-link active" data-page="home" href="#home">
+        <span class="nav-link__icon">🏠</span> Home
+      </a>
+      <a class="nav-link" data-page="playground" href="#playground">
+        <span class="nav-link__icon">💻</span> Code Playground
+      </a>
+
+      <div class="sidebar__section-label" style="margin-top: 0.5rem">Algorithms</div>
+      <a class="nav-link" data-page="sorting" href="#sorting">
+        <span class="nav-link__icon">📊</span> Sorting
+      </a>
+      <a class="nav-link" data-page="searching" href="#searching">
+        <span class="nav-link__icon">🔍</span> Searching
+      </a>
+
+      <div class="sidebar__section-label" style="margin-top: 0.5rem">Data Structures</div>
+      <a class="nav-link" data-page="stack-queue" href="#stack-queue">
+        <span class="nav-link__icon">📚</span> Stack & Queue
+      </a>
+      <a class="nav-link" data-page="linked-list" href="#linked-list">
+        <span class="nav-link__icon">🔗</span> Linked List
+      </a>
+      <a class="nav-link" data-page="tree" href="#tree">
+        <span class="nav-link__icon">🌳</span> Binary Tree
+      </a>
+      <a class="nav-link" data-page="graph" href="#graph">
+        <span class="nav-link__icon">🕸️</span> Graph
+      </a>
+    </nav>
+  </aside>
+
+  <!-- ======== MAIN CONTENT ======== -->
+  <main class="main-content">
+
+    <!-- ======== HOME PAGE ======== -->
+    <section id="home-page" class="page-section active">
+      <div class="hero">
+        <div class="hero__bg"></div>
+        <div class="hero__content">
+          <div class="hero__badge">⚡ Interactive DSA Learning Platform</div>
+          <h1 class="hero__title">
+            Visualize <span class="gradient-text">Algorithms</span> & Data Structures
+          </h1>
+          <p class="hero__description">
+            Watch sorting algorithms race, trees grow, and graphs traverse in real-time. 
+            Paste your own code and see exactly what it does, step by step.
+          </p>
+          <div class="hero__actions">
+            <button class="btn btn--primary" data-navigate="sorting">
+              🚀 Start Learning
+            </button>
+            <button class="btn btn--secondary" data-navigate="playground">
+              💻 Code Playground
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="page-body">
+        <div class="features-row stagger-children">
+          <div class="glass-card glass-card--static feature-card">
+            <div class="feature-card__icon">👁️</div>
+            <div class="feature-card__title">Visual Learning</div>
+            <div class="feature-card__desc">See every swap, comparison, and traversal animated step by step with color-coded states.</div>
+          </div>
+          <div class="glass-card glass-card--static feature-card">
+            <div class="feature-card__icon">💻</div>
+            <div class="feature-card__title">Code Playground</div>
+            <div class="feature-card__desc">Paste your code in any language. We detect the algorithm and visualize its execution.</div>
+          </div>
+          <div class="glass-card glass-card--static feature-card">
+            <div class="feature-card__icon">⚡</div>
+            <div class="feature-card__title">Full Control</div>
+            <div class="feature-card__desc">Play, pause, step forward/back, and adjust speed. Learn at your own pace.</div>
+          </div>
+        </div>
+
+        <h2 style="margin-top: 3rem; font-size: 1.6rem; font-weight: 700;">Explore Topics</h2>
+        <div class="category-grid stagger-children">
+          <div class="glass-card category-card" data-page="sorting" id="card-sorting">
+            <div class="category-card__icon category-card__icon--sorting">📊</div>
+            <div class="category-card__title">Sorting Algorithms</div>
+            <div class="category-card__desc">Bubble, Selection, Insertion, Merge, and Quick Sort with animated bar charts.</div>
+            <span class="category-card__arrow">→</span>
+          </div>
+          <div class="glass-card category-card" data-page="searching" id="card-searching">
+            <div class="category-card__icon category-card__icon--searching">🔍</div>
+            <div class="category-card__title">Searching Algorithms</div>
+            <div class="category-card__desc">Linear Search and Binary Search with highlighted array traversal.</div>
+            <span class="category-card__arrow">→</span>
+          </div>
+          <div class="glass-card category-card" data-page="stack-queue" id="card-stack">
+            <div class="category-card__icon category-card__icon--stack">📚</div>
+            <div class="category-card__title">Stack & Queue</div>
+            <div class="category-card__desc">Push, pop, enqueue, dequeue — see LIFO and FIFO in action.</div>
+            <span class="category-card__arrow">→</span>
+          </div>
+          <div class="glass-card category-card" data-page="linked-list" id="card-linked">
+            <div class="category-card__icon category-card__icon--linked">🔗</div>
+            <div class="category-card__title">Linked List</div>
+            <div class="category-card__desc">Insert, delete, search, and reverse with animated node pointers.</div>
+            <span class="category-card__arrow">→</span>
+          </div>
+          <div class="glass-card category-card" data-page="tree" id="card-tree">
+            <div class="category-card__icon category-card__icon--tree">🌳</div>
+            <div class="category-card__title">Binary Search Tree</div>
+            <div class="category-card__desc">Insert, delete, search, and traverse (inorder, preorder, postorder, level-order).</div>
+            <span class="category-card__arrow">→</span>
+          </div>
+          <div class="glass-card category-card" data-page="graph" id="card-graph">
+            <div class="category-card__icon category-card__icon--graph">🕸️</div>
+            <div class="category-card__title">Graph Algorithms</div>
+            <div class="category-card__desc">BFS, DFS, and Dijkstra's shortest path on interactive graph visualizations.</div>
+            <span class="category-card__arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SORTING PAGE ======== -->
+    <section id="sorting-page" class="page-section">
+      <div class="page-header">
+        <h1 class="page-header__title">📊 Sorting Algorithms</h1>
+        <p class="page-header__subtitle">Watch how different sorting algorithms organize data step by step</p>
+      </div>
+      <div class="page-body">
+        <!-- Algorithm Tabs -->
+        <div class="algo-tabs">
+          <button class="algo-tab active" data-algo="bubble">Bubble Sort</button>
+          <button class="algo-tab" data-algo="selection">Selection Sort</button>
+          <button class="algo-tab" data-algo="insertion">Insertion Sort</button>
+          <button class="algo-tab" data-algo="merge">Merge Sort</button>
+          <button class="algo-tab" data-algo="quick">Quick Sort</button>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Size</span>
+            <input type="number" id="sort-size" value="30" min="5" max="80" style="width: 70px">
+          </div>
+          <button class="btn btn--secondary btn--sm" id="sort-generate">🎲 Random</button>
+          <button class="btn btn--primary btn--sm" id="sort-start">▶ Visualize</button>
+        </div>
+
+        <!-- Visualization -->
+        <div class="viz-container glass-card glass-card--static">
+          <div id="sort-bars" class="sort-bars"></div>
+        </div>
+
+        <!-- Playback -->
+        <div class="playback-bar">
+          <div class="playback-bar__controls">
+            <button class="playback-btn" id="sort-step-back" title="Step Back">⏮</button>
+            <button class="playback-btn" id="sort-play" title="Play">▶</button>
+            <button class="playback-btn" id="sort-pause" title="Pause" style="display:none">⏸</button>
+            <button class="playback-btn" id="sort-step-fwd" title="Step Forward">⏭</button>
+            <button class="playback-btn" id="sort-reset" title="Reset">↺</button>
+          </div>
+          <div class="playback-bar__progress">
+            <div class="progress-track"><div class="progress-fill" id="sort-progress-fill"></div></div>
+            <span class="progress-step-label" id="sort-step-label">0 / 0</span>
+          </div>
+          <div class="speed-control">
+            <span class="speed-label" id="sort-speed-label">1x</span>
+            <input type="range" id="sort-speed" min="100" max="1000" value="600">
+          </div>
+        </div>
+
+        <div class="step-description" id="sort-step-desc">Press <strong>Visualize</strong> then <strong>Play</strong> to begin.</div>
+
+        <!-- Info Panel -->
+        <div class="info-panel">
+          <div class="glass-card glass-card--static info-card">
+            <div class="info-card__title"><span>📝</span> Pseudocode</div>
+            <pre class="pseudocode" id="sort-pseudocode"></pre>
+            <p class="text-sm text-secondary" id="sort-algo-desc" style="margin-top: 1rem"></p>
+          </div>
+          <div class="glass-card glass-card--static info-card">
+            <div class="info-card__title"><span>⏱️</span> Complexity</div>
+            <div class="complexity-grid" id="sort-complexity"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SEARCHING PAGE ======== -->
+    <section id="searching-page" class="page-section">
+      <div class="page-header">
+        <h1 class="page-header__title">🔍 Searching Algorithms</h1>
+        <p class="page-header__subtitle">See how search algorithms find elements in an array</p>
+      </div>
+      <div class="page-body">
+        <div class="algo-tabs">
+          <button class="algo-tab active" data-algo="linear">Linear Search</button>
+          <button class="algo-tab" data-algo="binary">Binary Search</button>
+        </div>
+
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Target</span>
+            <input type="number" id="search-target" value="" style="width: 80px">
+          </div>
+          <button class="btn btn--secondary btn--sm" id="search-generate">🎲 Random Array</button>
+          <button class="btn btn--primary btn--sm" id="search-start">▶ Search</button>
+        </div>
+
+        <div class="viz-container glass-card glass-card--static">
+          <div id="search-array" class="search-array"></div>
+        </div>
+
+        <div class="playback-bar">
+          <div class="playback-bar__controls">
+            <button class="playback-btn" id="search-step-back">⏮</button>
+            <button class="playback-btn" id="search-play">▶</button>
+            <button class="playback-btn" id="search-pause" style="display:none">⏸</button>
+            <button class="playback-btn" id="search-step-fwd">⏭</button>
+            <button class="playback-btn" id="search-reset">↺</button>
+          </div>
+          <div class="playback-bar__progress">
+            <div class="progress-track"><div class="progress-fill" id="search-progress-fill"></div></div>
+            <span class="progress-step-label" id="search-step-label">0 / 0</span>
+          </div>
+          <div class="speed-control">
+            <span class="speed-label" id="search-speed-label">1x</span>
+            <input type="range" id="search-speed" min="100" max="1000" value="600">
+          </div>
+        </div>
+
+        <div class="step-description" id="search-step-desc">Press <strong>Search</strong> then <strong>Play</strong> to begin.</div>
+
+        <div class="info-panel">
+          <div class="glass-card glass-card--static info-card">
+            <div class="info-card__title"><span>📝</span> Pseudocode</div>
+            <pre class="pseudocode" id="search-pseudocode"></pre>
+          </div>
+          <div class="glass-card glass-card--static info-card">
+            <div class="info-card__title"><span>⏱️</span> Complexity</div>
+            <div class="complexity-grid" id="search-complexity"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== STACK & QUEUE PAGE ======== -->
+    <section id="stack-queue-page" class="page-section">
+      <div class="page-header">
+        <h1 class="page-header__title">📚 Stack & Queue</h1>
+        <p class="page-header__subtitle">Explore LIFO (Stack) and FIFO (Queue) data structures interactively</p>
+      </div>
+      <div class="page-body">
+        <div class="algo-tabs">
+          <button class="algo-tab active" data-algo="stack">Stack (LIFO)</button>
+          <button class="algo-tab" data-algo="queue">Queue (FIFO)</button>
+        </div>
+
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Value</span>
+            <input type="text" id="sq-value" placeholder="Enter value..." style="width: 140px">
+          </div>
+
+          <!-- Stack operations -->
+          <div id="stack-ops" class="control-group gap-sm">
+            <button class="btn btn--success btn--sm" id="sq-push">Push</button>
+            <button class="btn btn--danger btn--sm" id="sq-pop">Pop</button>
+            <button class="btn btn--secondary btn--sm" id="sq-peek">Peek</button>
+          </div>
+
+          <!-- Queue operations -->
+          <div id="queue-ops" class="control-group gap-sm" style="display:none">
+            <button class="btn btn--success btn--sm" id="sq-enqueue">Enqueue</button>
+            <button class="btn btn--danger btn--sm" id="sq-dequeue">Dequeue</button>
+            <button class="btn btn--secondary btn--sm" id="sq-front">Front</button>
+          </div>
+
+          <button class="btn btn--secondary btn--sm" id="sq-clear">Clear</button>
+
+          <div class="control-group" style="margin-left: auto">
+            <span class="stat-badge"><span class="stat-badge__dot" style="background: var(--accent-cyan)"></span> Size: <strong id="sq-size">0</strong></span>
+            <span class="stat-badge"><span class="stat-badge__dot" style="background: var(--accent-yellow)"></span> Empty: <strong id="sq-is-empty">Yes</strong></span>
+          </div>
+        </div>
+
+        <div class="viz-container glass-card glass-card--static" style="min-height: 300px">
+          <div id="sq-visual" class="ds-container"></div>
+        </div>
+
+        <div class="step-description" id="sq-message">Choose <strong>Stack</strong> or <strong>Queue</strong>, enter a value, and perform operations.</div>
+      </div>
+    </section>
+
+    <!-- ======== LINKED LIST PAGE ======== -->
+    <section id="linked-list-page" class="page-section">
+      <div class="page-header">
+        <h1 class="page-header__title">🔗 Linked List</h1>
+        <p class="page-header__subtitle">Visualize singly linked list operations with animated pointer updates</p>
+      </div>
+      <div class="page-body">
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Value</span>
+            <input type="text" id="ll-value" placeholder="Enter value..." style="width: 120px">
+          </div>
+          <div class="control-group">
+            <span class="control-label">Position</span>
+            <input type="number" id="ll-position" placeholder="idx" min="0" style="width: 70px">
+          </div>
+          <button class="btn btn--success btn--sm" id="ll-insert-head">+ Head</button>
+          <button class="btn btn--success btn--sm" id="ll-insert-tail">+ Tail</button>
+          <button class="btn btn--secondary btn--sm" id="ll-insert-at">+ At Pos</button>
+          <button class="btn btn--danger btn--sm" id="ll-delete-head">− Head</button>
+          <button class="btn btn--danger btn--sm" id="ll-delete-tail">− Tail</button>
+          <button class="btn btn--primary btn--sm" id="ll-search">🔍 Search</button>
+          <button class="btn btn--secondary btn--sm" id="ll-reverse">⇄ Reverse</button>
+          <button class="btn btn--secondary btn--sm" id="ll-clear">Clear</button>
+          <span class="stat-badge" style="margin-left: auto"><span class="stat-badge__dot" style="background: var(--accent-green)"></span> Size: <strong id="ll-size">0</strong></span>
+        </div>
+
+        <div class="viz-container glass-card glass-card--static" id="ll-visual"></div>
+
+        <!-- Playback for search/reverse animations -->
+        <div class="playback-bar">
+          <div class="playback-bar__controls">
+            <button class="playback-btn" id="ll-step-back">⏮</button>
+            <button class="playback-btn" id="ll-play">▶</button>
+            <button class="playback-btn" id="ll-pause" style="display:none">⏸</button>
+            <button class="playback-btn" id="ll-step-fwd">⏭</button>
+            <button class="playback-btn" id="ll-reset">↺</button>
+          </div>
+          <div class="playback-bar__progress">
+            <div class="progress-track"><div class="progress-fill" id="ll-progress-fill"></div></div>
+            <span class="progress-step-label" id="ll-step-label">0 / 0</span>
+          </div>
+          <div class="speed-control">
+            <span class="speed-label" id="ll-speed-label">1x</span>
+            <input type="range" id="ll-speed" min="100" max="1000" value="600">
+          </div>
+        </div>
+
+        <div class="step-description" id="ll-step-desc">Add, remove, or search nodes in the linked list.</div>
+        <div class="step-description" id="ll-message" style="margin-top: 0.5rem">Linked list initialized with sample data.</div>
+      </div>
+    </section>
+
+    <!-- ======== TREE PAGE ======== -->
+    <section id="tree-page" class="page-section">
+      <div class="page-header">
+        <h1 class="page-header__title">🌳 Binary Search Tree</h1>
+        <p class="page-header__subtitle">Build and traverse a BST with animated operations</p>
+      </div>
+      <div class="page-body">
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Value</span>
+            <input type="number" id="tree-value" placeholder="Enter number..." style="width: 120px">
+          </div>
+          <button class="btn btn--success btn--sm" id="tree-insert">+ Insert</button>
+          <button class="btn btn--danger btn--sm" id="tree-delete">− Delete</button>
+          <button class="btn btn--primary btn--sm" id="tree-search">🔍 Search</button>
+          <button class="btn btn--secondary btn--sm" id="tree-generate">🎲 Sample</button>
+          <button class="btn btn--secondary btn--sm" id="tree-clear">Clear</button>
+        </div>
+
+        <h3 style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Traversals</h3>
+        <div class="algo-tabs" style="margin-bottom: 1rem">
+          <button class="algo-tab active" data-algo="inorder">Inorder</button>
+          <button class="algo-tab" data-algo="preorder">Preorder</button>
+          <button class="algo-tab" data-algo="postorder">Postorder</button>
+          <button class="algo-tab" data-algo="levelorder">Level Order</button>
+        </div>
+
+        <div class="viz-container glass-card glass-card--static">
+          <svg id="tree-svg" class="tree-svg"></svg>
+        </div>
+
+        <div class="playback-bar">
+          <div class="playback-bar__controls">
+            <button class="playback-btn" id="tree-step-back">⏮</button>
+            <button class="playback-btn" id="tree-play">▶</button>
+            <button class="playback-btn" id="tree-pause" style="display:none">⏸</button>
+            <button class="playback-btn" id="tree-step-fwd">⏭</button>
+            <button class="playback-btn" id="tree-reset">↺</button>
+          </div>
+          <div class="playback-bar__progress">
+            <div class="progress-track"><div class="progress-fill" id="tree-progress-fill"></div></div>
+            <span class="progress-step-label" id="tree-step-label">0 / 0</span>
+          </div>
+          <div class="speed-control">
+            <span class="speed-label" id="tree-speed-label">1x</span>
+            <input type="range" id="tree-speed" min="100" max="1000" value="600">
+          </div>
+        </div>
+
+        <div class="step-description" id="tree-step-desc">Insert values or select a traversal to begin.</div>
+        <div class="step-description" id="tree-message" style="margin-top: 0.5rem">Sample BST initialized.</div>
+      </div>
+    </section>
+
+    <!-- ======== GRAPH PAGE ======== -->
+    <section id="graph-page" class="page-section">
+      <div class="page-header">
+        <h1 class="page-header__title">🕸️ Graph Algorithms</h1>
+        <p class="page-header__subtitle">Visualize BFS, DFS, and Dijkstra's algorithm on interactive graphs</p>
+      </div>
+      <div class="page-body">
+        <div class="algo-tabs">
+          <button class="algo-tab active" data-algo="bfs">BFS</button>
+          <button class="algo-tab" data-algo="dfs">DFS</button>
+          <button class="algo-tab" data-algo="dijkstra">Dijkstra</button>
+        </div>
+
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Start Node</span>
+            <select id="graph-start"></select>
+          </div>
+          <button class="btn btn--primary btn--sm" id="graph-start-btn">▶ Run Algorithm</button>
+          <button class="btn btn--secondary btn--sm" id="graph-regenerate">🎲 Reset Graph</button>
+          <p class="text-sm text-secondary" id="graph-algo-desc" style="margin-left: auto; max-width: 300px;"></p>
+        </div>
+
+        <div class="viz-container glass-card glass-card--static">
+          <svg id="graph-svg" class="graph-svg"></svg>
+        </div>
+
+        <div class="playback-bar">
+          <div class="playback-bar__controls">
+            <button class="playback-btn" id="graph-step-back">⏮</button>
+            <button class="playback-btn" id="graph-play">▶</button>
+            <button class="playback-btn" id="graph-pause" style="display:none">⏸</button>
+            <button class="playback-btn" id="graph-step-fwd">⏭</button>
+            <button class="playback-btn" id="graph-reset">↺</button>
+          </div>
+          <div class="playback-bar__progress">
+            <div class="progress-track"><div class="progress-fill" id="graph-progress-fill"></div></div>
+            <span class="progress-step-label" id="graph-step-label">0 / 0</span>
+          </div>
+          <div class="speed-control">
+            <span class="speed-label" id="graph-speed-label">1x</span>
+            <input type="range" id="graph-speed" min="100" max="1000" value="600">
+          </div>
+        </div>
+
+        <div class="step-description" id="graph-step-desc">Select a start node and algorithm, then press <strong>Run Algorithm</strong>.</div>
+      </div>
+    </section>
+
+    <!-- ======== PLAYGROUND PAGE ======== -->
+    <section id="playground-page" class="page-section">
+      <div class="page-header">
+        <h1 class="page-header__title">💻 Code Playground</h1>
+        <p class="page-header__subtitle">Paste your DSA code in any language — we'll detect the algorithm and visualize it</p>
+      </div>
+      <div class="page-body">
+        <!-- Sample code buttons -->
+        <div class="controls-row" style="margin-bottom: 1rem">
+          <span class="control-label">Try a sample:</span>
+          <button class="btn btn--secondary btn--sm" data-sample="bubble_python">Bubble Sort (Python)</button>
+          <button class="btn btn--secondary btn--sm" data-sample="binary_java">Binary Search (Java)</button>
+          <button class="btn btn--secondary btn--sm" data-sample="quick_cpp">Quick Sort (C++)</button>
+          <button class="btn btn--secondary btn--sm" data-sample="bfs_js">BFS (JavaScript)</button>
+          <button class="btn btn--secondary btn--sm" data-sample="merge_python">Merge Sort (Python)</button>
+        </div>
+
+        <div class="code-editor-container">
+          <!-- Code Input -->
+          <div class="glass-card glass-card--static code-editor-panel code-editor-panel--left">
+            <div class="code-editor-header">
+              <div class="code-editor-header__title">
+                <span>📝</span> Your Code
+              </div>
+              <div class="control-group gap-sm">
+                <button class="btn btn--primary btn--sm" id="playground-visualize">🔍 Detect & Visualize</button>
+                <button class="btn btn--secondary btn--sm" id="playground-clear">Clear</button>
+              </div>
+            </div>
+            <div class="code-editor-body">
+              <textarea 
+                id="code-input" 
+                class="code-textarea" 
+                placeholder="// Paste your DSA code here in any language...
+// Examples: sorting algorithms, search functions,
+// tree traversals, graph algorithms, etc.
+//
+// Supported languages: Python, Java, C++, JavaScript, C, Go, and more.
+//
+// Try clicking a sample above to get started!"
+                spellcheck="false"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Visualization Output -->
+          <div class="glass-card glass-card--static code-editor-panel code-editor-panel--right">
+            <div class="code-editor-header">
+              <div class="code-editor-header__title">
+                <span>📊</span> Visualization
+              </div>
+            </div>
+            <div class="code-editor-body code-editor-body--scroll" style="overflow-y: auto;">
+              <div class="detection-badge hidden" id="playground-badge"></div>
+              <div id="playground-viz" class="playground-viz">
+                <div class="empty-state">
+                  <div class="empty-state__icon">💻</div>
+                  <div class="empty-state__title">Paste Your Code</div>
+                  <div class="empty-state__desc">Paste any DSA code on the left and click "Detect & Visualize" to see the algorithm animation.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/animation-engine.js"></script>
+  <script src="js/visualizers/sorting.js"></script>
+  <script src="js/visualizers/searching.js"></script>
+  <script src="js/visualizers/stack-queue.js"></script>
+  <script src="js/visualizers/linked-list.js"></script>
+  <script src="js/visualizers/tree.js"></script>
+  <script src="js/visualizers/graph.js"></script>
+  <script src="js/code-playground.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
