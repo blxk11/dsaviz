@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Learn Data Structures & Algorithms through stunning interactive visualizations. Paste your code and watch it come alive step-by-step.">
+  <meta name="description"
+    content="Learn Data Structures & Algorithms through stunning interactive visualizations. Paste your code and watch it come alive step-by-step.">
   <title>DSA Visualizer — Learn Algorithms Visually</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/visualizer.css">
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css">
 </head>
+
 <body>
 
   <!-- Background effects -->
@@ -73,7 +80,7 @@
             Visualize <span class="gradient-text">Algorithms</span> & Data Structures
           </h1>
           <p class="hero__description">
-            Watch sorting algorithms race, trees grow, and graphs traverse in real-time. 
+            Watch sorting algorithms race, trees grow, and graphs traverse in real-time.
             Paste your own code and see exactly what it does, step by step.
           </p>
           <div class="hero__actions">
@@ -93,17 +100,20 @@
           <div class="glass-card glass-card--static feature-card">
             <div class="feature-card__icon">👁️</div>
             <div class="feature-card__title">Visual Learning</div>
-            <div class="feature-card__desc">See every swap, comparison, and traversal animated step by step with color-coded states.</div>
+            <div class="feature-card__desc">See every swap, comparison, and traversal animated step by step with
+              color-coded states.</div>
           </div>
           <div class="glass-card glass-card--static feature-card">
             <div class="feature-card__icon">💻</div>
             <div class="feature-card__title">Code Playground</div>
-            <div class="feature-card__desc">Paste your code in any language. We detect the algorithm and visualize its execution.</div>
+            <div class="feature-card__desc">Paste your code in any language. We detect the algorithm and visualize its
+              execution.</div>
           </div>
           <div class="glass-card glass-card--static feature-card">
             <div class="feature-card__icon">⚡</div>
             <div class="feature-card__title">Full Control</div>
-            <div class="feature-card__desc">Play, pause, step forward/back, and adjust speed. Learn at your own pace.</div>
+            <div class="feature-card__desc">Play, pause, step forward/back, and adjust speed. Learn at your own pace.
+            </div>
           </div>
         </div>
 
@@ -112,7 +122,8 @@
           <div class="glass-card category-card" data-page="sorting" id="card-sorting">
             <div class="category-card__icon category-card__icon--sorting">📊</div>
             <div class="category-card__title">Sorting Algorithms</div>
-            <div class="category-card__desc">Bubble, Selection, Insertion, Merge, and Quick Sort with animated bar charts.</div>
+            <div class="category-card__desc">Bubble, Selection, Insertion, Merge, and Quick Sort with animated bar
+              charts.</div>
             <span class="category-card__arrow">→</span>
           </div>
           <div class="glass-card category-card" data-page="searching" id="card-searching">
@@ -136,13 +147,15 @@
           <div class="glass-card category-card" data-page="tree" id="card-tree">
             <div class="category-card__icon category-card__icon--tree">🌳</div>
             <div class="category-card__title">Binary Search Tree</div>
-            <div class="category-card__desc">Insert, delete, search, and traverse (inorder, preorder, postorder, level-order).</div>
+            <div class="category-card__desc">Insert, delete, search, and traverse (inorder, preorder, postorder,
+              level-order).</div>
             <span class="category-card__arrow">→</span>
           </div>
           <div class="glass-card category-card" data-page="graph" id="card-graph">
             <div class="category-card__icon category-card__icon--graph">🕸️</div>
             <div class="category-card__title">Graph Algorithms</div>
-            <div class="category-card__desc">BFS, DFS, and Dijkstra's shortest path on interactive graph visualizations.</div>
+            <div class="category-card__desc">BFS, DFS, and Dijkstra's shortest path on interactive graph visualizations.
+            </div>
             <span class="category-card__arrow">→</span>
           </div>
         </div>
@@ -190,7 +203,9 @@
             <button class="playback-btn" id="sort-reset" title="Reset">↺</button>
           </div>
           <div class="playback-bar__progress">
-            <div class="progress-track"><div class="progress-fill" id="sort-progress-fill"></div></div>
+            <div class="progress-track">
+              <div class="progress-fill" id="sort-progress-fill"></div>
+            </div>
             <span class="progress-step-label" id="sort-step-label">0 / 0</span>
           </div>
           <div class="speed-control">
@@ -199,7 +214,8 @@
           </div>
         </div>
 
-        <div class="step-description" id="sort-step-desc">Press <strong>Visualize</strong> then <strong>Play</strong> to begin.</div>
+        <div class="step-description" id="sort-step-desc">Press <strong>Visualize</strong> then <strong>Play</strong> to
+          begin.</div>
 
         <!-- Info Panel -->
         <div class="info-panel">
@@ -250,7 +266,9 @@
             <button class="playback-btn" id="search-reset">↺</button>
           </div>
           <div class="playback-bar__progress">
-            <div class="progress-track"><div class="progress-fill" id="search-progress-fill"></div></div>
+            <div class="progress-track">
+              <div class="progress-fill" id="search-progress-fill"></div>
+            </div>
             <span class="progress-step-label" id="search-step-label">0 / 0</span>
           </div>
           <div class="speed-control">
@@ -259,7 +277,8 @@
           </div>
         </div>
 
-        <div class="step-description" id="search-step-desc">Press <strong>Search</strong> then <strong>Play</strong> to begin.</div>
+        <div class="step-description" id="search-step-desc">Press <strong>Search</strong> then <strong>Play</strong> to
+          begin.</div>
 
         <div class="info-panel">
           <div class="glass-card glass-card--static info-card">
@@ -309,8 +328,10 @@
           <button class="btn btn--secondary btn--sm" id="sq-clear">Clear</button>
 
           <div class="control-group" style="margin-left: auto">
-            <span class="stat-badge"><span class="stat-badge__dot" style="background: var(--accent-cyan)"></span> Size: <strong id="sq-size">0</strong></span>
-            <span class="stat-badge"><span class="stat-badge__dot" style="background: var(--accent-yellow)"></span> Empty: <strong id="sq-is-empty">Yes</strong></span>
+            <span class="stat-badge"><span class="stat-badge__dot" style="background: var(--accent-cyan)"></span> Size:
+              <strong id="sq-size">0</strong></span>
+            <span class="stat-badge"><span class="stat-badge__dot" style="background: var(--accent-yellow)"></span>
+              Empty: <strong id="sq-is-empty">Yes</strong></span>
           </div>
         </div>
 
@@ -318,7 +339,8 @@
           <div id="sq-visual" class="ds-container"></div>
         </div>
 
-        <div class="step-description" id="sq-message">Choose <strong>Stack</strong> or <strong>Queue</strong>, enter a value, and perform operations.</div>
+        <div class="step-description" id="sq-message">Choose <strong>Stack</strong> or <strong>Queue</strong>, enter a
+          value, and perform operations.</div>
       </div>
     </section>
 
@@ -346,7 +368,8 @@
           <button class="btn btn--primary btn--sm" id="ll-search">🔍 Search</button>
           <button class="btn btn--secondary btn--sm" id="ll-reverse">⇄ Reverse</button>
           <button class="btn btn--secondary btn--sm" id="ll-clear">Clear</button>
-          <span class="stat-badge" style="margin-left: auto"><span class="stat-badge__dot" style="background: var(--accent-green)"></span> Size: <strong id="ll-size">0</strong></span>
+          <span class="stat-badge" style="margin-left: auto"><span class="stat-badge__dot"
+              style="background: var(--accent-green)"></span> Size: <strong id="ll-size">0</strong></span>
         </div>
 
         <div class="viz-container glass-card glass-card--static" id="ll-visual"></div>
@@ -361,7 +384,9 @@
             <button class="playback-btn" id="ll-reset">↺</button>
           </div>
           <div class="playback-bar__progress">
-            <div class="progress-track"><div class="progress-fill" id="ll-progress-fill"></div></div>
+            <div class="progress-track">
+              <div class="progress-fill" id="ll-progress-fill"></div>
+            </div>
             <span class="progress-step-label" id="ll-step-label">0 / 0</span>
           </div>
           <div class="speed-control">
@@ -371,7 +396,8 @@
         </div>
 
         <div class="step-description" id="ll-step-desc">Add, remove, or search nodes in the linked list.</div>
-        <div class="step-description" id="ll-message" style="margin-top: 0.5rem">Linked list initialized with sample data.</div>
+        <div class="step-description" id="ll-message" style="margin-top: 0.5rem">Linked list initialized with sample
+          data.</div>
       </div>
     </section>
 
@@ -415,7 +441,9 @@
             <button class="playback-btn" id="tree-reset">↺</button>
           </div>
           <div class="playback-bar__progress">
-            <div class="progress-track"><div class="progress-fill" id="tree-progress-fill"></div></div>
+            <div class="progress-track">
+              <div class="progress-fill" id="tree-progress-fill"></div>
+            </div>
             <span class="progress-step-label" id="tree-step-label">0 / 0</span>
           </div>
           <div class="speed-control">
@@ -465,7 +493,9 @@
             <button class="playback-btn" id="graph-reset">↺</button>
           </div>
           <div class="playback-bar__progress">
-            <div class="progress-track"><div class="progress-fill" id="graph-progress-fill"></div></div>
+            <div class="progress-track">
+              <div class="progress-fill" id="graph-progress-fill"></div>
+            </div>
             <span class="progress-step-label" id="graph-step-label">0 / 0</span>
           </div>
           <div class="speed-control">
@@ -474,7 +504,8 @@
           </div>
         </div>
 
-        <div class="step-description" id="graph-step-desc">Select a start node and algorithm, then press <strong>Run Algorithm</strong>.</div>
+        <div class="step-description" id="graph-step-desc">Select a start node and algorithm, then press <strong>Run
+            Algorithm</strong>.</div>
       </div>
     </section>
 
@@ -482,7 +513,8 @@
     <section id="playground-page" class="page-section">
       <div class="page-header">
         <h1 class="page-header__title">💻 Code Playground</h1>
-        <p class="page-header__subtitle">Paste your DSA code in any language — we'll detect the algorithm and visualize it</p>
+        <p class="page-header__subtitle">Paste your DSA code in any language — we'll detect the algorithm and visualize
+          it</p>
       </div>
       <div class="page-body">
         <!-- Sample code buttons -->
@@ -508,18 +540,13 @@
               </div>
             </div>
             <div class="code-editor-body">
-              <textarea 
-                id="code-input" 
-                class="code-textarea" 
-                placeholder="// Paste your DSA code here in any language...
+              <textarea id="code-input" class="code-textarea" placeholder="// Paste your DSA code here in any language...
 // Examples: sorting algorithms, search functions,
 // tree traversals, graph algorithms, etc.
 //
 // Supported languages: Python, Java, C++, JavaScript, C, Go, and more.
 //
-// Try clicking a sample above to get started!"
-                spellcheck="false"
-              ></textarea>
+// Try clicking a sample above to get started!" spellcheck="false"></textarea>
             </div>
           </div>
 
@@ -536,7 +563,8 @@
                 <div class="empty-state">
                   <div class="empty-state__icon">💻</div>
                   <div class="empty-state__title">Paste Your Code</div>
-                  <div class="empty-state__desc">Paste any DSA code on the left and click "Detect & Visualize" to see the algorithm animation.</div>
+                  <div class="empty-state__desc">Paste any DSA code on the left and click "Detect & Visualize" to see
+                    the algorithm animation.</div>
                 </div>
               </div>
             </div>
@@ -548,6 +576,12 @@
   </main>
 
   <!-- Scripts -->
+  <!-- CodeMirror -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
+
   <script src="js/animation-engine.js"></script>
   <script src="js/visualizers/sorting.js"></script>
   <script src="js/visualizers/searching.js"></script>
@@ -558,4 +592,5 @@
   <script src="js/code-playground.js"></script>
   <script src="js/app.js"></script>
 </body>
+
 </html>

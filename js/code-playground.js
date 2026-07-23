@@ -4,6 +4,7 @@
    ======================================== */
 
 const CodePlayground = {
+  editor: null,
   detectedAlgorithm: null,
   detectedValues: null,
 
@@ -593,7 +594,7 @@ const CodePlayground = {
       if (!algo) return;
       const pattern = this.patterns[algo];
       if (pattern) {
-        const code = document.getElementById('code-input').value;
+        const code = this.editor ? this.editor.getValue() : document.getElementById('code-input').value;
         const values = this.extractArrayValues(code);
         const target = this.extractTarget(code);
         const launched = this.launchVisualizer(
@@ -693,16 +694,41 @@ def merge(left, right):
     };
 
     const textarea = document.getElementById('code-input');
-    if (textarea && samples[type]) {
-      textarea.value = samples[type];
+    if (samples[type]) {
+      if (this.editor) {
+        this.editor.setValue(samples[type]);
+      } else if (textarea) {
+        textarea.value = samples[type];
+      }
     }
   },
 
   init() {
+    const textarea = document.getElementById('code-input');
+    if (textarea && window.CodeMirror) {
+      this.editor = CodeMirror.fromTextArea(textarea, {
+        lineNumbers: true,
+        mode: "javascript",
+        theme: "dracula",
+        viewportMargin: Infinity
+      });
+      
+      let timeout;
+      this.editor.on("change", () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          const code = this.editor.getValue();
+          if (code.trim()) {
+            this.visualize(code);
+          }
+        }, 800); // 800ms debounce
+      });
+    }
+
     const visualizeBtn = document.getElementById('playground-visualize');
     if (visualizeBtn) {
       visualizeBtn.addEventListener('click', () => {
-        const code = document.getElementById('code-input').value;
+        const code = this.editor ? this.editor.getValue() : document.getElementById('code-input').value;
         if (!code.trim()) return;
         this.visualize(code);
       });
@@ -717,7 +743,11 @@ def merge(left, right):
 
     // Clear button
     document.getElementById('playground-clear')?.addEventListener('click', () => {
-      document.getElementById('code-input').value = '';
+      if (this.editor) {
+        this.editor.setValue('');
+      } else {
+        document.getElementById('code-input').value = '';
+      }
       document.getElementById('playground-badge').className = 'detection-badge hidden';
       document.getElementById('playground-viz').innerHTML = `
         <div class="empty-state">
