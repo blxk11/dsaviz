@@ -90,143 +90,88 @@ const CodePlayground = {
     bubble: {
       name: 'Bubble Sort',
       category: 'sorting',
-      keywords: [/bubble/i],
       structural: [
-        // Nested loops with comparison and swap
-        /for.*\{[\s\S]*?for[\s\S]*?(>|<)[\s\S]*?swap|temp/i,
-        /for.*for[\s\S]*?\[.*\].*>.*\[.*\][\s\S]*?(swap|\[.*\]\s*=)/i,
-        /while[\s\S]*?(swap|temp)[\s\S]*?(>|<)/i,
+        /for[\s\S]*?for[\s\S]*?(?:>|<)[\s\S]*?(?:swap|temp|\[.*?\]\s*=)/i,
+        /for[\s\S]*?for[\s\S]*?\[.*?(\+|-)\s*1?\][\s\S]*?(swap|temp|\[.*?\]\s*=)/i
       ]
     },
     selection: {
       name: 'Selection Sort',
       category: 'sorting',
-      keywords: [/selection/i],
       structural: [
-        /min(idx|index|_idx|Idx|Index)/i,
-        /for[\s\S]*?min[\s\S]*?for[\s\S]*?min/i,
+        /for[\s\S]*?for[\s\S]*?(?:min|max)[\s\S]*?(?:swap|temp|\[.*?\]\s*=)/i,
+        /min(?:idx|index|_idx)?\s*=\s*.*?[\s\S]*?for[\s\S]*?for[\s\S]*?(?:swap|temp)/i
       ]
     },
     insertion: {
       name: 'Insertion Sort',
       category: 'sorting',
-      keywords: [/insertion/i],
       structural: [
+        /for[\s\S]*?while[\s\S]*?(?:>|<)[\s\S]*?\[.*?\+\s*1\]\s*=/i,
+        /while[\s\S]*?>=[\s\S]*?\[.*?\+\s*1\]\s*=\s*\[.*?\]/i,
         /key\s*=\s*\w+\[/i,
-        /while[\s\S]*?key[\s\S]*?>[\s\S]*?\[.*\+\s*1\]/i,
-        /while.*j\s*>=?\s*0[\s\S]*?key/i,
       ]
     },
     merge: {
       name: 'Merge Sort',
       category: 'sorting',
-      keywords: [/merge\s*sort/i, /mergesort/i],
       structural: [
-        /merge[\s\S]*?left[\s\S]*?right[\s\S]*?mid/i,
-        /mid\s*=.*\/\s*2[\s\S]*?merge/i,
-        /(def|function|void|static)\s+merge/i,
+        /merge[\s\S]*?(?:mid|half)\s*=\s*.*?\/.*?2/i,
+        /(?:mid|half)\s*=\s*.*?\/.*?2[\s\S]*?(?:mergeSort|sort)[\s\S]*?(?:mergeSort|sort)[\s\S]*?merge/i,
+        /left[\s\S]*?right[\s\S]*?merge\s*\(/i
       ]
     },
     quick: {
       name: 'Quick Sort',
       category: 'sorting',
-      keywords: [/quick\s*sort/i, /quicksort/i],
       structural: [
         /partition[\s\S]*?pivot/i,
-        /pivot[\s\S]*?partition/i,
-        /(def|function|void|static)\s+partition/i,
-      ]
-    },
-    linear: {
-      name: 'Linear Search',
-      category: 'searching',
-      keywords: [/linear\s*search/i],
-      structural: [
-        /for[\s\S]*?(==|===|equals)[\s\S]*?(return|found|break)/i,
+        /pivot\s*=[\s\S]*?partition/i
       ]
     },
     binary: {
       name: 'Binary Search',
       category: 'searching',
-      keywords: [/binary\s*search/i],
       structural: [
-        /(low|left|lo|start)[\s\S]*?(high|right|hi|end)[\s\S]*?mid/i,
-        /mid\s*=[\s\S]*?(low|left|lo)\s*\+[\s\S]*?(high|right|hi)/i,
-        /while[\s\S]*?(low|left|lo)\s*<=?\s*(high|right|hi)[\s\S]*?mid/i,
+        /\b(?:low|left|lo|start|l)\b[\s\S]*?\b(?:high|right|hi|end|r)\b[\s\S]*?while[\s\S]*?mid/i,
+        /while[\s\S]*?mid[\s\S]*?(?:\/|>>)\s*2/i
+      ]
+    },
+    linear: {
+      name: 'Linear Search',
+      category: 'searching',
+      structural: [
+        /for[\s\S]*?(?:==|===|equals)[\s\S]*?(?:return|found|break)/i
       ]
     },
     bfs: {
       name: 'Breadth-First Search',
       category: 'graph',
-      keywords: [/\bbfs\b/i, /breadth.?first/i],
       structural: [
-        /queue[\s\S]*?visited[\s\S]*?while[\s\S]*?(dequeue|shift|poll|pop)/i,
-        /visited[\s\S]*?queue[\s\S]*?while/i,
+        /queue[\s\S]*?visited[\s\S]*?while[\s\S]*?(?:shift|poll|pop\(0\)|dequeue|queue\.length)/i,
+        /visited[\s\S]*?queue[\s\S]*?while/i
       ]
     },
     dfs: {
       name: 'Depth-First Search',
       category: 'graph',
-      keywords: [/\bdfs\b/i, /depth.?first/i],
       structural: [
-        /stack[\s\S]*?visited[\s\S]*?while[\s\S]*?pop/i,
-        /(def|function|void)\s+dfs/i,
-        /visited[\s\S]*?(stack|recursive)[\s\S]*?neighbor/i,
-      ]
-    },
-    dijkstra: {
-      name: "Dijkstra's Algorithm",
-      category: 'graph',
-      keywords: [/dijkstra/i],
-      structural: [
-        /dist(ance)?\s*[\[{][\s\S]*?infinity|INT_MAX|float\('inf'\)|Math\.MAX/i,
-        /priority[\s_]?queue[\s\S]*?dist/i,
-      ]
-    },
-    stack: {
-      name: 'Stack Operations',
-      category: 'stack-queue',
-      keywords: [/\bstack\b/i],
-      structural: [
-        /push[\s\S]*?pop/i,
-        /\.push\([\s\S]*?\.pop\(/i,
-      ]
-    },
-    queue: {
-      name: 'Queue Operations',
-      category: 'stack-queue',
-      keywords: [/\bqueue\b/i],
-      structural: [
-        /enqueue[\s\S]*?dequeue/i,
-        /\.push\([\s\S]*?\.(shift|poll)\(/i,
-      ]
-    },
-    tree_insert: {
-      name: 'BST Insert',
-      category: 'tree',
-      keywords: [/bst|binary\s*search\s*tree/i],
-      structural: [
-        /\.left[\s\S]*?\.right[\s\S]*?(insert|add)/i,
-        /(insert|add)[\s\S]*?node[\s\S]*?\.left[\s\S]*?\.right/i,
-        /if[\s\S]*?<[\s\S]*?\.left[\s\S]*?else[\s\S]*?\.right/i,
-      ]
-    },
-    tree_traversal: {
-      name: 'Tree Traversal',
-      category: 'tree',
-      keywords: [/inorder|preorder|postorder|level.?order|traversal/i],
-      structural: [
-        /(inorder|preorder|postorder)[\s\S]*?\.left[\s\S]*?\.right/i,
-        /\.left[\s\S]*?\.right[\s\S]*?(inorder|preorder|postorder)/i,
+        /(?:stack|recursive|dfs)[\s\S]*?visited[\s\S]*?(?:neighbor|for)/i,
+        /visited[\s\S]*?(?:stack|recursive|dfs)[\s\S]*?(?:neighbor|for)/i
       ]
     },
     linked_list: {
       name: 'Linked List',
       category: 'linked-list',
-      keywords: [/linked\s*list/i],
       structural: [
-        /\.next[\s\S]*?(head|node|insert|delete|remove)/i,
-        /(head|node)[\s\S]*?\.next[\s\S]*?null/i,
+        /(?:class|struct)\s+(?:Node|ListNode)[\s\S]*?(?:next|next_node)/i
+      ]
+    },
+    tree: {
+      name: 'Binary Search Tree',
+      category: 'tree',
+      structural: [
+        /(?:class|struct)\s+(?:Node|TreeNode)[\s\S]*?left[\s\S]*?right/i
       ]
     }
   },
@@ -234,25 +179,20 @@ const CodePlayground = {
   detect(code) {
     if (!code || code.trim().length < 10) return null;
 
-    // First pass: keyword matching (highest confidence)
-    for (const [key, pattern] of Object.entries(this.patterns)) {
-      for (const kw of pattern.keywords) {
-        if (kw.test(code)) {
-          return { algorithm: key, name: pattern.name, category: pattern.category, confidence: 'high', method: 'keyword' };
-        }
-      }
-    }
-
-    // Second pass: structural matching
     for (const [key, pattern] of Object.entries(this.patterns)) {
       for (const struct of pattern.structural) {
         if (struct.test(code)) {
-          return { algorithm: key, name: pattern.name, category: pattern.category, confidence: 'medium', method: 'structural' };
+          return { algorithm: key, name: pattern.name, category: pattern.category, confidence: 'high', method: 'structural' };
         }
       }
     }
 
     return null;
+  },
+
+  isDSACode(code) {
+    const dsaRegex = /(?:for|while|class|def|function|struct|\[\]|Node|array|list)/i;
+    return dsaRegex.test(code);
   },
 
   extractArrayValues(code) {
@@ -294,9 +234,24 @@ const CodePlayground = {
     const vizContainer = document.getElementById('playground-viz');
 
     if (!result) {
+      const isDSA = this.isDSACode(code);
       badge.className = 'detection-badge detection-badge--warning';
-      badge.innerHTML = '⚠️ Could not auto-detect algorithm. Please select manually below.';
-      this.showManualSelect();
+      
+      const errorMsg = isDSA 
+        ? 'No DSA algorithm detected in your code. Try pasting a bubble sort, binary search, or BFS implementation.'
+        : 'This doesn\'t look like a DSA algorithm. Paste sorting, searching, or graph traversal code.';
+        
+      badge.innerHTML = '⚠️ ' + errorMsg;
+      
+      vizContainer.innerHTML = `
+        <div class="empty-state" style="padding: 2rem">
+          <div class="empty-state__icon">🤔</div>
+          <div class="empty-state__title">Algorithm Not Detected</div>
+          <div class="empty-state__desc" style="margin-bottom: 1.5rem">
+            ${errorMsg}
+          </div>
+        </div>
+      `;
       return;
     }
 
@@ -555,61 +510,7 @@ const CodePlayground = {
     );
   },
 
-  showManualSelect() {
-    const vizContainer = document.getElementById('playground-viz');
-    vizContainer.innerHTML = `
-      <div class="empty-state" style="padding: 2rem">
-        <div class="empty-state__icon">🤔</div>
-        <div class="empty-state__title">Algorithm Not Detected</div>
-        <div class="empty-state__desc" style="margin-bottom: 1.5rem">
-          Select the algorithm type manually to see the visualization.
-        </div>
-        <div class="controls-row" style="justify-content: center">
-          <select id="manual-algo-select" style="min-width: 200px">
-            <option value="">-- Select Algorithm --</option>
-            <optgroup label="Sorting">
-              <option value="bubble">Bubble Sort</option>
-              <option value="selection">Selection Sort</option>
-              <option value="insertion">Insertion Sort</option>
-              <option value="merge">Merge Sort</option>
-              <option value="quick">Quick Sort</option>
-            </optgroup>
-            <optgroup label="Searching">
-              <option value="linear">Linear Search</option>
-              <option value="binary">Binary Search</option>
-            </optgroup>
-            <optgroup label="Graph">
-              <option value="bfs">BFS</option>
-              <option value="dfs">DFS</option>
-              <option value="dijkstra">Dijkstra</option>
-            </optgroup>
-          </select>
-          <button class="btn btn--primary" id="manual-visualize-btn">Visualize →</button>
-        </div>
-      </div>
-    `;
 
-    document.getElementById('manual-visualize-btn')?.addEventListener('click', () => {
-      const algo = document.getElementById('manual-algo-select').value;
-      if (!algo) return;
-      const pattern = this.patterns[algo];
-      if (pattern) {
-        const code = this.editor ? this.editor.getValue() : document.getElementById('code-input').value;
-        const values = this.extractArrayValues(code);
-        const target = this.extractTarget(code);
-        const launched = this.launchVisualizer(
-          { algorithm: algo, name: pattern.name, category: pattern.category, confidence: 'manual', method: 'user' },
-          values,
-          target
-        );
-        if (launched) {
-          const badge = document.getElementById('playground-badge');
-          badge.className = 'detection-badge detection-badge--success';
-          badge.innerHTML = `✅ Selected: <strong>${pattern.name}</strong> (manual selection)`;
-        }
-      }
-    });
-  },
 
   loadSample(type) {
     const samples = {
