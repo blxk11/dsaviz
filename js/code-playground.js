@@ -241,7 +241,7 @@ const CodePlayground = {
         ? 'No DSA algorithm detected in your code. Try pasting a bubble sort, binary search, or BFS implementation.'
         : 'This doesn\'t look like a DSA algorithm. Paste sorting, searching, or graph traversal code.';
         
-      badge.innerHTML = '⚠️ ' + errorMsg;
+      badge.innerHTML = '✗ ' + errorMsg;
       
       vizContainer.innerHTML = `
         <div class="empty-state" style="padding: 2rem">
@@ -257,7 +257,7 @@ const CodePlayground = {
 
     this.detectedAlgorithm = result;
     badge.className = 'detection-badge detection-badge--success';
-    badge.innerHTML = `✅ Detected: <strong>${result.name}</strong> (${result.confidence} confidence via ${result.method} match)`;
+    badge.innerHTML = `✓ Detected: <strong>${result.name}</strong>`;
 
     // Extract values if possible
     const values = this.extractArrayValues(code);
@@ -604,6 +604,8 @@ def merge(left, right):
     }
   },
 
+  _autoDemoPlayed: false,
+
   init() {
     const textarea = document.getElementById('code-input');
     if (textarea && window.CodeMirror) {
@@ -658,5 +660,65 @@ def merge(left, right):
         </div>
       `;
     });
+
+    // Auto-demo: type bubble sort code on first scroll into view
+    this._setupAutoDemo();
+  },
+
+  _setupAutoDemo() {
+    const playgroundSection = document.getElementById('playground-page');
+    if (!playgroundSection) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this._autoDemoPlayed) {
+          this._autoDemoPlayed = true;
+          observer.disconnect();
+          setTimeout(() => this._runAutoDemo(), 500);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(playgroundSection);
+  },
+
+  _runAutoDemo() {
+    const demoCode = `def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
+
+arr = [64, 34, 25, 12, 22, 11, 90]
+bubble_sort(arr)`;
+
+    let charIndex = 0;
+    const typeInterval = setInterval(() => {
+      if (charIndex <= demoCode.length) {
+        const currentText = demoCode.substring(0, charIndex);
+        if (this.editor) {
+          this.editor.setValue(currentText);
+        } else {
+          const textarea = document.getElementById('code-input');
+          if (textarea) textarea.value = currentText;
+        }
+        charIndex++;
+      } else {
+        clearInterval(typeInterval);
+        // Auto-trigger detection after typing finishes
+        setTimeout(() => {
+          this.visualize(demoCode);
+          // Show prompt after animation starts
+          setTimeout(() => {
+            const badge = document.getElementById('playground-badge');
+            if (badge) {
+              badge.innerHTML += '<br><span style="color: var(--text-secondary); font-size: 0.85rem;">Now try your own code ↓</span>';
+            }
+          }, 1000);
+        }, 300);
+      }
+    }, 30);
   }
 };

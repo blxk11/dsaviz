@@ -7,30 +7,30 @@
 /* --- Design Tokens --- */
 :root {
   /* Backgrounds */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-tertiary: #f1f5f9;
-  --bg-card: #ffffff;
-  --bg-glass: #ffffff;
-  --bg-glass-hover: #f8fafc;
-  --border-glass: #e2e8f0;
-  --border-glass-hover: #cbd5e1;
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+  --bg-card: #161b22;
+  --bg-glass: rgba(22, 27, 34, 0.7);
+  --bg-glass-hover: rgba(33, 38, 45, 0.8);
+  --border-glass: #30363d;
+  --border-glass-hover: #484f58;
 
   /* Text */
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --text-inverse: #ffffff;
+  --text-primary: #f0f6fc;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --text-inverse: #0d1117;
 
   /* Accents */
-  --accent-cyan: #0284c7;
-  --accent-purple: #6366f1;
+  --accent-cyan: #4f9ef7;
+  --accent-purple: #7c3aed;
   --accent-pink: #e11d48;
-  --accent-green: #16a34a;
+  --accent-green: #10b981;
   --accent-yellow: #ca8a04;
-  --accent-orange: #ea580c;
+  --accent-orange: #ff6b35;
   --accent-red: #dc2626;
-  --accent-blue: #2563eb;
+  --accent-blue: #4f9ef7;
 
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
@@ -42,7 +42,7 @@
 
   /* Typography */
   --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --font-mono: 'Fira Code', 'JetBrains Mono', 'Cascadia Code', monospace;
 
   --fs-xs: 0.7rem;
   --fs-sm: 0.8rem;
@@ -313,14 +313,10 @@ select {
 .stagger-children > *:nth-child(7) { animation-delay: 0.35s; }
 .stagger-children > *:nth-child(8) { animation-delay: 0.4s; }
 
-/* Page transition */
+/* Page sections — single scrolling page */
 .page-section {
-  display: none;
-  opacity: 0;
-}
-.page-section.active {
   display: block;
-  animation: fadeIn 0.35s var(--ease-out) forwards;
+  opacity: 1;
 }
 
 /* --- Background Effects --- */

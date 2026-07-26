@@ -3,29 +3,9 @@
    ======================================== */
 
 const App = {
-  currentPage: 'home',
-
-  pages: ['home', 'sorting', 'searching', 'stack-queue', 'linked-list', 'tree', 'graph', 'playground'],
-
   init() {
     this.bindNavigation();
-    this.handleRoute();
-    window.addEventListener('hashchange', () => this.handleRoute());
-
-    // Mobile sidebar
-    const toggle = document.getElementById('sidebar-toggle');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('sidebar-overlay');
-
-    toggle?.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-      overlay.classList.toggle('open');
-    });
-
-    overlay?.addEventListener('click', () => {
-      sidebar.classList.remove('open');
-      overlay.classList.remove('open');
-    });
+    this.initHeroAnimation();
 
     // Initialize all visualizers
     SortingVisualizer.init();
@@ -38,74 +18,77 @@ const App = {
   },
 
   bindNavigation() {
-    document.querySelectorAll('.nav-link[data-page]').forEach(link => {
+    // Smooth scroll for nav links and CTA buttons
+    document.querySelectorAll('[data-page], [data-navigate]').forEach(link => {
       link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const page = link.dataset.page;
-        window.location.hash = page;
-      });
-    });
+        // Only prevent default if it's an anchor link
+        if (link.tagName.toLowerCase() === 'a') {
+          e.preventDefault();
+        }
+        
+        const targetId = link.dataset.page || link.dataset.navigate;
+        const targetEl = document.getElementById(`${targetId}-page`) || document.getElementById(targetId);
+        
+        if (targetEl) {
+          // Adjust scroll position for sticky header
+          const headerOffset = 60; // Approximate height of .top-nav
+          const elementPosition = targetEl.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
-    // Category card clicks on home page
-    document.querySelectorAll('.category-card[data-page]').forEach(card => {
-      card.addEventListener('click', () => {
-        window.location.hash = card.dataset.page;
-      });
-    });
-
-    // Hero CTA buttons
-    document.querySelectorAll('[data-navigate]').forEach(el => {
-      el.addEventListener('click', () => {
-        window.location.hash = el.dataset.navigate;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
       });
     });
   },
 
-  handleRoute() {
-    const hash = window.location.hash.replace('#', '') || 'home';
-    this.navigateTo(hash);
-  },
+  initHeroAnimation() {
+    const container = document.getElementById('hero-bg-animation');
+    if (!container) return;
 
-  navigateTo(page) {
-    if (!this.pages.includes(page)) page = 'home';
-
-    // Stop any running animations
-    window.animationEngine.stop();
-
-    // Hide all pages
-    document.querySelectorAll('.page-section').forEach(p => {
-      p.classList.remove('active');
-    });
-
-    // Show target page
-    const targetPage = document.getElementById(`${page}-page`);
-    if (targetPage) {
-      targetPage.classList.add('active');
+    // Create translucent bars
+    const numBars = Math.floor(window.innerWidth / 30);
+    const bars = [];
+    
+    for (let i = 0; i < numBars; i++) {
+      const bar = document.createElement('div');
+      bar.className = 'hero-bar';
+      const height = Math.random() * 80 + 20; // 20% to 100%
+      bar.style.height = `${height}%`;
+      bar.style.width = '20px';
+      bar.style.backgroundColor = 'var(--accent-cyan)';
+      bar.style.opacity = '0.4';
+      bar.style.borderRadius = '3px 3px 0 0';
+      bar.style.transition = 'height 0.3s ease, background-color 0.3s ease';
+      
+      container.appendChild(bar);
+      bars.push(bar);
     }
 
-    // Update nav
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.classList.remove('active');
-      if (link.dataset.page === page) {
-        link.classList.add('active');
-      }
-    });
+    // Continuous bubble sort like animation
+    setInterval(() => {
+      const i = Math.floor(Math.random() * (numBars - 1));
+      const b1 = bars[i];
+      const b2 = bars[i + 1];
+      
+      b1.style.backgroundColor = 'var(--accent-orange)';
+      b2.style.backgroundColor = 'var(--accent-orange)';
 
-    // Close mobile sidebar
-    document.getElementById('sidebar')?.classList.remove('open');
-    document.getElementById('sidebar-overlay')?.classList.remove('open');
+      setTimeout(() => {
+        const h1 = b1.style.height;
+        const h2 = b2.style.height;
+        
+        if (parseFloat(h1) > parseFloat(h2)) {
+          b1.style.height = h2;
+          b2.style.height = h1;
+        }
 
-    // Scroll to top
-    window.scrollTo(0, 0);
-
-    this.currentPage = page;
-
-    // Re-render SVGs after page is visible (they need clientWidth)
-    if (page === 'tree') {
-      setTimeout(() => TreeVisualizer.render(), 50);
-    } else if (page === 'graph') {
-      setTimeout(() => GraphVisualizer.render(), 50);
-    }
+        b1.style.backgroundColor = 'var(--accent-cyan)';
+        b2.style.backgroundColor = 'var(--accent-cyan)';
+      }, 300);
+    }, 400);
   }
 };
 

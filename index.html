@@ -12,6 +12,10 @@
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/visualizer.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!-- CodeMirror -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css">
@@ -24,106 +28,143 @@
   <div class="bg-glow bg-glow--cyan"></div>
   <div class="bg-glow bg-glow--purple"></div>
 
-  <!-- Mobile sidebar toggle -->
-  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">☰</button>
-  <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-  <!-- ======== SIDEBAR ======== -->
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar__logo">
-      <div class="sidebar__logo-icon">⚡</div>
-      <span class="sidebar__logo-text">DSA Viz</span>
+
+  <!-- ======== TOP NAV ======== -->
+  <header class="top-nav" id="top-nav">
+    <div class="top-nav__logo">
+      <div class="top-nav__logo-icon">⚡</div>
+      <span class="top-nav__logo-text">DSA Viz</span>
     </div>
-    <nav class="sidebar__nav">
-      <div class="sidebar__section-label">Navigation</div>
-      <a class="nav-link active" data-page="home" href="#home">
-        <span class="nav-link__icon">🏠</span> Home
-      </a>
-      <a class="nav-link" data-page="playground" href="#playground">
-        <span class="nav-link__icon">💻</span> Code Playground
-      </a>
-
-      <div class="sidebar__section-label" style="margin-top: 0.5rem">Algorithms</div>
-      <a class="nav-link" data-page="sorting" href="#sorting">
-        <span class="nav-link__icon">📊</span> Sorting
-      </a>
-      <a class="nav-link" data-page="searching" href="#searching">
-        <span class="nav-link__icon">🔍</span> Searching
-      </a>
-
-      <div class="sidebar__section-label" style="margin-top: 0.5rem">Data Structures</div>
-      <a class="nav-link" data-page="stack-queue" href="#stack-queue">
-        <span class="nav-link__icon">📚</span> Stack & Queue
-      </a>
-      <a class="nav-link" data-page="linked-list" href="#linked-list">
-        <span class="nav-link__icon">🔗</span> Linked List
-      </a>
-      <a class="nav-link" data-page="tree" href="#tree">
-        <span class="nav-link__icon">🌳</span> Binary Tree
-      </a>
-      <a class="nav-link" data-page="graph" href="#graph">
-        <span class="nav-link__icon">🕸️</span> Graph
-      </a>
+    <nav class="top-nav__links">
+      <a class="nav-link active" data-page="home" href="#home-page">Home</a>
+      <a class="nav-link" data-page="playground" href="#playground-page">Playground</a>
+      <a class="nav-link" data-page="sorting" href="#sorting-page">Sorting</a>
+      <a class="nav-link" data-page="searching" href="#searching-page">Searching</a>
+      <a class="nav-link" data-page="stack-queue" href="#stack-queue-page">Stack & Queue</a>
+      <a class="nav-link" data-page="linked-list" href="#linked-list-page">Linked List</a>
+      <a class="nav-link" data-page="tree" href="#tree-page">Tree</a>
+      <a class="nav-link" data-page="graph" href="#graph-page">Graph</a>
     </nav>
-  </aside>
+  </header>
 
   <!-- ======== MAIN CONTENT ======== -->
   <main class="main-content">
 
-    <!-- ======== HOME PAGE ======== -->
-    <section id="home-page" class="page-section active">
-      <div class="hero">
+    <!-- ======== HERO SECTION ======== -->
+    <section id="home-page" class="page-section">
+      <div class="hero" id="home">
         <div class="hero__bg"></div>
+        <div id="hero-bg-animation"></div>
         <div class="hero__content">
           <div class="hero__badge">⚡ Interactive DSA Learning Platform</div>
           <h1 class="hero__title">
-            Visualize <span class="gradient-text">Algorithms</span> & Data Structures
+            What does your <span class="gradient-text">code</span> actually do?
           </h1>
           <p class="hero__description">
-            Watch sorting algorithms race, trees grow, and graphs traverse in real-time.
-            Paste your own code and see exactly what it does, step by step.
+            Paste it. Watch it think.
           </p>
           <div class="hero__actions">
-            <button class="btn btn--primary" data-navigate="sorting">
-              🚀 Start Learning
+            <button class="btn btn--primary" data-navigate="playground">
+              Try it now →
             </button>
-            <button class="btn btn--secondary" data-navigate="playground">
-              💻 Code Playground
-            </button>
+            <p class="text-sm text-secondary" style="margin-top: 1rem;">Used by developers in India, USA, Germany, Japan and 3 other countries</p>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Features -->
+    <!-- ======== PLAYGROUND PAGE ======== -->
+    <section id="playground-page" class="page-section">
+      <div class="page-header">
+        <h1 class="page-header__title">💻 Code Playground</h1>
+        <p class="page-header__subtitle">Paste your DSA code in any language — we'll detect the algorithm and visualize it</p>
+      </div>
+      <div class="page-body">
+        <!-- Sample code buttons -->
+        <div class="controls-row" style="margin-bottom: 1rem">
+          <span class="control-label">Try a sample:</span>
+          <button class="btn btn--secondary btn--sm" data-sample="bubble_python">Bubble Sort (Python)</button>
+          <button class="btn btn--secondary btn--sm" data-sample="binary_java">Binary Search (Java)</button>
+          <button class="btn btn--secondary btn--sm" data-sample="quick_cpp">Quick Sort (C++)</button>
+          <button class="btn btn--secondary btn--sm" data-sample="bfs_js">BFS (JavaScript)</button>
+          <button class="btn btn--secondary btn--sm" data-sample="merge_python">Merge Sort (Python)</button>
+        </div>
+
+        <div class="code-editor-container">
+          <!-- Code Input -->
+          <div class="glass-card glass-card--static code-editor-panel code-editor-panel--left">
+            <div class="code-editor-header">
+              <div class="code-editor-header__title">
+                <span>📝</span> Paste Your Code Here
+              </div>
+              <div class="control-group gap-sm">
+                <button class="btn btn--primary btn--sm" id="playground-visualize">🔍 Detect &amp; Visualize</button>
+                <button class="btn btn--secondary btn--sm" id="playground-clear">Clear</button>
+              </div>
+            </div>
+            <div class="code-editor-body">
+              <textarea id="code-input" class="code-textarea" placeholder="# Paste any DSA code here&#10;# We'll detect and visualize it automatically" spellcheck="false"></textarea>
+            </div>
+          </div>
+
+          <!-- Visualization Output -->
+          <div class="glass-card glass-card--static code-editor-panel code-editor-panel--right">
+            <div class="code-editor-header">
+              <div class="code-editor-header__title">
+                <span>📊</span> Watch It Animate
+              </div>
+            </div>
+            <div class="code-editor-body code-editor-body--scroll" style="overflow-y: auto;">
+              <div class="detection-badge hidden" id="playground-badge"></div>
+              <div id="playground-viz" class="playground-viz">
+                <div class="empty-state">
+                  <div class="empty-state__icon">💻</div>
+                  <div class="empty-state__title">Paste Your Code</div>
+                  <div class="empty-state__desc">Paste any DSA code on the left and click "Detect &amp; Visualize" to see the algorithm animation.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== FEATURES & EXPLORE ======== -->
+    <section class="page-section">
       <div class="page-body">
         <div class="features-row stagger-children">
           <div class="glass-card glass-card--static feature-card">
             <div class="feature-card__icon">👁️</div>
             <div class="feature-card__title">Visual Learning</div>
-            <div class="feature-card__desc">See every swap, comparison, and traversal animated step by step with
-              color-coded states.</div>
+            <div class="feature-card__desc">See every swap, comparison, and traversal animated step by step with color-coded states.</div>
           </div>
           <div class="glass-card glass-card--static feature-card">
             <div class="feature-card__icon">💻</div>
             <div class="feature-card__title">Code Playground</div>
-            <div class="feature-card__desc">Paste your code in any language. We detect the algorithm and visualize its
-              execution.</div>
+            <div class="feature-card__desc">Paste your code in any language. We detect the algorithm and visualize its execution.</div>
           </div>
           <div class="glass-card glass-card--static feature-card">
             <div class="feature-card__icon">⚡</div>
             <div class="feature-card__title">Full Control</div>
-            <div class="feature-card__desc">Play, pause, step forward/back, and adjust speed. Learn at your own pace.
-            </div>
+            <div class="feature-card__desc">Play, pause, step forward/back, and adjust speed. Learn at your own pace.</div>
           </div>
         </div>
 
         <h2 style="margin-top: 3rem; font-size: 1.6rem; font-weight: 700;">Explore Topics</h2>
         <div class="category-grid stagger-children">
           <div class="glass-card category-card" data-page="sorting" id="card-sorting">
-            <div class="category-card__icon category-card__icon--sorting">📊</div>
+            <div class="category-card__icon category-card__icon--sorting">
+              <div class="micro-anim micro-anim--sorting">
+                <div class="micro-bar" style="height:40%"></div>
+                <div class="micro-bar" style="height:80%"></div>
+                <div class="micro-bar" style="height:20%"></div>
+                <div class="micro-bar" style="height:60%"></div>
+                <div class="micro-bar" style="height:100%"></div>
+              </div>
+            </div>
             <div class="category-card__title">Sorting Algorithms</div>
-            <div class="category-card__desc">Bubble, Selection, Insertion, Merge, and Quick Sort with animated bar
-              charts.</div>
+            <div class="category-card__desc">Bubble, Selection, Insertion, Merge, and Quick Sort with animated bar charts.</div>
             <span class="category-card__arrow">→</span>
           </div>
           <div class="glass-card category-card" data-page="searching" id="card-searching">
@@ -134,7 +175,7 @@
           </div>
           <div class="glass-card category-card" data-page="stack-queue" id="card-stack">
             <div class="category-card__icon category-card__icon--stack">📚</div>
-            <div class="category-card__title">Stack & Queue</div>
+            <div class="category-card__title">Stack &amp; Queue</div>
             <div class="category-card__desc">Push, pop, enqueue, dequeue — see LIFO and FIFO in action.</div>
             <span class="category-card__arrow">→</span>
           </div>
@@ -145,17 +186,30 @@
             <span class="category-card__arrow">→</span>
           </div>
           <div class="glass-card category-card" data-page="tree" id="card-tree">
-            <div class="category-card__icon category-card__icon--tree">🌳</div>
+            <div class="category-card__icon category-card__icon--tree">
+              <div class="micro-anim micro-anim--tree">
+                <div class="micro-node root"></div>
+                <div class="micro-node left"></div>
+                <div class="micro-node right"></div>
+                <div class="micro-node new"></div>
+              </div>
+            </div>
             <div class="category-card__title">Binary Search Tree</div>
-            <div class="category-card__desc">Insert, delete, search, and traverse (inorder, preorder, postorder,
-              level-order).</div>
+            <div class="category-card__desc">Insert, delete, search, and traverse (inorder, preorder, postorder, level-order).</div>
             <span class="category-card__arrow">→</span>
           </div>
           <div class="glass-card category-card" data-page="graph" id="card-graph">
-            <div class="category-card__icon category-card__icon--graph">🕸️</div>
-            <div class="category-card__title">Graph Algorithms</div>
-            <div class="category-card__desc">BFS, DFS, and Dijkstra's shortest path on interactive graph visualizations.
+            <div class="category-card__icon category-card__icon--graph">
+              <div class="micro-anim micro-anim--graph">
+                <div class="micro-node root"></div>
+                <div class="micro-node n1"></div>
+                <div class="micro-node n2"></div>
+                <div class="micro-edge e1"></div>
+                <div class="micro-edge e2"></div>
+              </div>
             </div>
+            <div class="category-card__title">Graph Algorithms</div>
+            <div class="category-card__desc">BFS, DFS, and Dijkstra's shortest path on interactive graph visualizations.</div>
             <span class="category-card__arrow">→</span>
           </div>
         </div>
@@ -509,69 +563,7 @@
       </div>
     </section>
 
-    <!-- ======== PLAYGROUND PAGE ======== -->
-    <section id="playground-page" class="page-section">
-      <div class="page-header">
-        <h1 class="page-header__title">💻 Code Playground</h1>
-        <p class="page-header__subtitle">Paste your DSA code in any language — we'll detect the algorithm and visualize
-          it</p>
-      </div>
-      <div class="page-body">
-        <!-- Sample code buttons -->
-        <div class="controls-row" style="margin-bottom: 1rem">
-          <span class="control-label">Try a sample:</span>
-          <button class="btn btn--secondary btn--sm" data-sample="bubble_python">Bubble Sort (Python)</button>
-          <button class="btn btn--secondary btn--sm" data-sample="binary_java">Binary Search (Java)</button>
-          <button class="btn btn--secondary btn--sm" data-sample="quick_cpp">Quick Sort (C++)</button>
-          <button class="btn btn--secondary btn--sm" data-sample="bfs_js">BFS (JavaScript)</button>
-          <button class="btn btn--secondary btn--sm" data-sample="merge_python">Merge Sort (Python)</button>
-        </div>
-
-        <div class="code-editor-container">
-          <!-- Code Input -->
-          <div class="glass-card glass-card--static code-editor-panel code-editor-panel--left">
-            <div class="code-editor-header">
-              <div class="code-editor-header__title">
-                <span>📝</span> Your Code
-              </div>
-              <div class="control-group gap-sm">
-                <button class="btn btn--primary btn--sm" id="playground-visualize">🔍 Detect & Visualize</button>
-                <button class="btn btn--secondary btn--sm" id="playground-clear">Clear</button>
-              </div>
-            </div>
-            <div class="code-editor-body">
-              <textarea id="code-input" class="code-textarea" placeholder="// Paste your DSA code here in any language...
-// Examples: sorting algorithms, search functions,
-// tree traversals, graph algorithms, etc.
-//
-// Supported languages: Python, Java, C++, JavaScript, C, Go, and more.
-//
-// Try clicking a sample above to get started!" spellcheck="false"></textarea>
-            </div>
-          </div>
-
-          <!-- Visualization Output -->
-          <div class="glass-card glass-card--static code-editor-panel code-editor-panel--right">
-            <div class="code-editor-header">
-              <div class="code-editor-header__title">
-                <span>📊</span> Visualization
-              </div>
-            </div>
-            <div class="code-editor-body code-editor-body--scroll" style="overflow-y: auto;">
-              <div class="detection-badge hidden" id="playground-badge"></div>
-              <div id="playground-viz" class="playground-viz">
-                <div class="empty-state">
-                  <div class="empty-state__icon">💻</div>
-                  <div class="empty-state__title">Paste Your Code</div>
-                  <div class="empty-state__desc">Paste any DSA code on the left and click "Detect & Visualize" to see
-                    the algorithm animation.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
   </main>
 
