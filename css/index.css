@@ -360,3 +360,41 @@ select {
     --sidebar-width: 0px;
   }
 }
+
+/* ========================================
+   RESPONSIVE OVERRIDES
+   ======================================== */
+
+/* Laptop (769px - 1024px) */
+@media (max-width: 1024px) {
+  :root {
+    --fs-base: 18px;
+    --fs-2xl: 42px; /* headings */
+  }
+}
+
+/* Tablet (481px - 768px) */
+@media (max-width: 768px) {
+  :root {
+    --fs-base: 17px;
+    --fs-2xl: 36px;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  :root {
+    --fs-base: 16px;
+    --fs-2xl: 28px;
+  }
+  .bg-grid, .bg-glow, #hero-bg-animation {
+    display: none !important;
+  }
+}
+
+/* Desktop (above 1024px) */
+@media (min-width: 1025px) {
+  :root {
+    --content-max-width: 1400px;
+  }
+}
