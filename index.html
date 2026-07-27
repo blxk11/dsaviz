@@ -33,7 +33,7 @@
   <!-- ======== TOP NAV ======== -->
   <header class="top-nav" id="top-nav">
     <div class="top-nav__logo">
-      <div class="top-nav__logo-icon">⚡</div>
+      <div class="top-nav__logo-icon" role="img" aria-label="Lightning Bolt Logo">⚡</div>
       <span class="top-nav__logo-text">DSA Viz</span>
     </div>
     <nav class="top-nav__links">
@@ -57,7 +57,7 @@
         <div class="hero__bg"></div>
         <div id="hero-bg-animation"></div>
         <div class="hero__content">
-          <div class="hero__badge">⚡ Interactive DSA Learning Platform</div>
+          <div class="hero__badge"><span role="img" aria-hidden="true">⚡</span> Interactive DSA Learning Platform</div>
           <h1 class="hero__title">
             What does your <span class="gradient-text">code</span> actually do?
           </h1>
@@ -77,7 +77,7 @@
     <!-- ======== PLAYGROUND PAGE ======== -->
     <section id="playground-page" class="page-section">
       <div class="page-header">
-        <h1 class="page-header__title">💻 Code Playground</h1>
+        <h1 class="page-header__title"><span role="img" aria-hidden="true">💻</span> Code Playground</h1>
         <p class="page-header__subtitle">Paste your DSA code in any language — we'll detect the algorithm and visualize it</p>
       </div>
       <div class="page-body">
@@ -96,7 +96,7 @@
           <div class="glass-card glass-card--static code-editor-panel code-editor-panel--left">
             <div class="code-editor-header">
               <div class="code-editor-header__title">
-                <span>📝</span> Paste Your Code Here
+                <span role="img" aria-hidden="true">📝</span> Paste Your Code Here
               </div>
               <div class="control-group gap-sm">
                 <button class="btn btn--primary btn--sm" id="playground-visualize">🔍 Detect &amp; Visualize</button>
@@ -112,14 +112,14 @@
           <div class="glass-card glass-card--static code-editor-panel code-editor-panel--right">
             <div class="code-editor-header">
               <div class="code-editor-header__title">
-                <span>📊</span> Watch It Animate
+                <span role="img" aria-hidden="true">📊</span> Watch It Animate
               </div>
             </div>
             <div class="code-editor-body code-editor-body--scroll" style="overflow-y: auto;">
               <div class="detection-badge hidden" id="playground-badge"></div>
               <div id="playground-viz" class="playground-viz">
                 <div class="empty-state">
-                  <div class="empty-state__icon">💻</div>
+                  <div class="empty-state__icon" role="img" aria-hidden="true">💻</div>
                   <div class="empty-state__title">Paste Your Code</div>
                   <div class="empty-state__desc">Paste any DSA code on the left and click "Detect &amp; Visualize" to see the algorithm animation.</div>
                 </div>
@@ -135,17 +135,17 @@
       <div class="page-body">
         <div class="features-row stagger-children">
           <div class="glass-card glass-card--static feature-card">
-            <div class="feature-card__icon">👁️</div>
+            <div class="feature-card__icon" role="img" aria-label="Eye icon">👁️</div>
             <div class="feature-card__title">Visual Learning</div>
             <div class="feature-card__desc">See every swap, comparison, and traversal animated step by step with color-coded states.</div>
           </div>
           <div class="glass-card glass-card--static feature-card">
-            <div class="feature-card__icon">💻</div>
+            <div class="feature-card__icon" role="img" aria-label="Laptop icon">💻</div>
             <div class="feature-card__title">Code Playground</div>
             <div class="feature-card__desc">Paste your code in any language. We detect the algorithm and visualize its execution.</div>
           </div>
           <div class="glass-card glass-card--static feature-card">
-            <div class="feature-card__icon">⚡</div>
+            <div class="feature-card__icon" role="img" aria-label="Lightning icon">⚡</div>
             <div class="feature-card__title">Full Control</div>
             <div class="feature-card__desc">Play, pause, step forward/back, and adjust speed. Learn at your own pace.</div>
           </div>
@@ -168,19 +168,19 @@
             <span class="category-card__arrow">→</span>
           </div>
           <div class="glass-card category-card" data-page="searching" id="card-searching">
-            <div class="category-card__icon category-card__icon--searching">🔍</div>
+            <div class="category-card__icon category-card__icon--searching" role="img" aria-label="Magnifying glass icon">🔍</div>
             <div class="category-card__title">Searching Algorithms</div>
             <div class="category-card__desc">Linear Search and Binary Search with highlighted array traversal.</div>
             <span class="category-card__arrow">→</span>
           </div>
           <div class="glass-card category-card" data-page="stack-queue" id="card-stack">
-            <div class="category-card__icon category-card__icon--stack">📚</div>
+            <div class="category-card__icon category-card__icon--stack" role="img" aria-label="Books icon">📚</div>
             <div class="category-card__title">Stack &amp; Queue</div>
             <div class="category-card__desc">Push, pop, enqueue, dequeue — see LIFO and FIFO in action.</div>
             <span class="category-card__arrow">→</span>
           </div>
           <div class="glass-card category-card" data-page="linked-list" id="card-linked">
-            <div class="category-card__icon category-card__icon--linked">🔗</div>
+            <div class="category-card__icon category-card__icon--linked" role="img" aria-label="Link icon">🔗</div>
             <div class="category-card__title">Linked List</div>
             <div class="category-card__desc">Insert, delete, search, and reverse with animated node pointers.</div>
             <span class="category-card__arrow">→</span>
@@ -219,7 +219,7 @@
     <!-- ======== SORTING PAGE ======== -->
     <section id="sorting-page" class="page-section">
       <div class="page-header">
-        <h1 class="page-header__title">📊 Sorting Algorithms</h1>
+        <h1 class="page-header__title"><span role="img" aria-hidden="true">📊</span> Sorting Algorithms</h1>
         <p class="page-header__subtitle">Watch how different sorting algorithms organize data step by step</p>
       </div>
       <div class="page-body">
@@ -274,7 +274,7 @@
         <!-- Info Panel -->
         <div class="info-panel">
           <div class="glass-card glass-card--static info-card">
-            <div class="info-card__title"><span>📝</span> Pseudocode</div>
+            <div class="info-card__title"><span role="img" aria-hidden="true">📝</span> Pseudocode</div>
             <pre class="pseudocode" id="sort-pseudocode"></pre>
             <p class="text-sm text-secondary" id="sort-algo-desc" style="margin-top: 1rem"></p>
           </div>
@@ -289,7 +289,7 @@
     <!-- ======== SEARCHING PAGE ======== -->
     <section id="searching-page" class="page-section">
       <div class="page-header">
-        <h1 class="page-header__title">🔍 Searching Algorithms</h1>
+        <h1 class="page-header__title"><span role="img" aria-hidden="true">🔍</span> Searching Algorithms</h1>
         <p class="page-header__subtitle">See how search algorithms find elements in an array</p>
       </div>
       <div class="page-body">
@@ -336,7 +336,7 @@
 
         <div class="info-panel">
           <div class="glass-card glass-card--static info-card">
-            <div class="info-card__title"><span>📝</span> Pseudocode</div>
+            <div class="info-card__title"><span role="img" aria-hidden="true">📝</span> Pseudocode</div>
             <pre class="pseudocode" id="search-pseudocode"></pre>
           </div>
           <div class="glass-card glass-card--static info-card">
@@ -350,7 +350,7 @@
     <!-- ======== STACK & QUEUE PAGE ======== -->
     <section id="stack-queue-page" class="page-section">
       <div class="page-header">
-        <h1 class="page-header__title">📚 Stack & Queue</h1>
+        <h1 class="page-header__title"><span role="img" aria-hidden="true">📚</span> Stack & Queue</h1>
         <p class="page-header__subtitle">Explore LIFO (Stack) and FIFO (Queue) data structures interactively</p>
       </div>
       <div class="page-body">
@@ -401,7 +401,7 @@
     <!-- ======== LINKED LIST PAGE ======== -->
     <section id="linked-list-page" class="page-section">
       <div class="page-header">
-        <h1 class="page-header__title">🔗 Linked List</h1>
+        <h1 class="page-header__title"><span role="img" aria-hidden="true">🔗</span> Linked List</h1>
         <p class="page-header__subtitle">Visualize singly linked list operations with animated pointer updates</p>
       </div>
       <div class="page-body">
@@ -458,7 +458,7 @@
     <!-- ======== TREE PAGE ======== -->
     <section id="tree-page" class="page-section">
       <div class="page-header">
-        <h1 class="page-header__title">🌳 Binary Search Tree</h1>
+        <h1 class="page-header__title"><span role="img" aria-hidden="true">🌳</span> Binary Search Tree</h1>
         <p class="page-header__subtitle">Build and traverse a BST with animated operations</p>
       </div>
       <div class="page-body">
@@ -514,7 +514,7 @@
     <!-- ======== GRAPH PAGE ======== -->
     <section id="graph-page" class="page-section">
       <div class="page-header">
-        <h1 class="page-header__title">🕸️ Graph Algorithms</h1>
+        <h1 class="page-header__title"><span role="img" aria-hidden="true">🕸️</span> Graph Algorithms</h1>
         <p class="page-header__subtitle">Visualize BFS, DFS, and Dijkstra's algorithm on interactive graphs</p>
       </div>
       <div class="page-body">
@@ -530,12 +530,12 @@
             <select id="graph-start"></select>
           </div>
           <button class="btn btn--primary btn--sm" id="graph-start-btn">▶ Run Algorithm</button>
-          <button class="btn btn--secondary btn--sm" id="graph-regenerate">🎲 Reset Graph</button>
+          <button class="btn btn--secondary btn--sm" id="graph-regenerate"><span role="img" aria-hidden="true">🎲</span> Reset Graph</button>
           <p class="text-sm text-secondary" id="graph-algo-desc" style="margin-left: auto; max-width: 300px;"></p>
         </div>
 
         <div class="viz-container glass-card glass-card--static">
-          <svg id="graph-svg" class="graph-svg"></svg>
+          <svg id="graph-svg" class="graph-svg" role="img" aria-label="Graph visualization" loading="lazy"></svg>
         </div>
 
         <div class="playback-bar">
