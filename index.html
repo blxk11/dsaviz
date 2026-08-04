@@ -8,10 +8,13 @@
     content="Learn Data Structures & Algorithms through stunning interactive visualizations. Paste your code and watch it come alive step-by-step.">
   <title>DSA Visualizer — Learn Algorithms Visually</title>
 
-  <meta name="description" content="Free DSA visualizer — paste your code and watch sorting, searching, trees and graphs animate step by step. No signup needed.">
-  <meta name="keywords" content="DSA visualizer, algorithm visualizer, sorting visualizer, binary search visualizer, graph visualizer, data structures, bubble sort animation, free coding tool">
+  <meta name="description"
+    content="Free DSA visualizer — paste your code and watch sorting, searching, trees and graphs animate step by step. No signup needed.">
+  <meta name="keywords"
+    content="DSA visualizer, algorithm visualizer, sorting visualizer, binary search visualizer, graph visualizer, data structures, bubble sort animation, free coding tool">
   <meta property="og:title" content="DSA Visualizer — Learn Algorithms Visually">
-  <meta property="og:description" content="Paste your code and watch it animate. Free interactive tool for sorting, searching, trees and graphs.">
+  <meta property="og:description"
+    content="Paste your code and watch it animate. Free interactive tool for sorting, searching, trees and graphs.">
   <meta property="og:url" content="https://dsavisualizercom.netlify.app">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -26,12 +29,15 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <!-- CodeMirror -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css">
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+  <script defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
   <script defer src="js/animation-engine.js"></script>
@@ -43,6 +49,13 @@
   <script defer src="js/visualizers/graph.js"></script>
   <script defer src="js/code-playground.js"></script>
   <script defer src="js/app.js"></script>
+  <script type="text/javascript">
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "xx22cv3qtq");
+  </script>
 </head>
 
 <body>
@@ -70,7 +83,7 @@
       <a class="nav-link" data-page="tree" href="#tree-page">Tree</a>
       <a class="nav-link" data-page="graph" href="#graph-page">Graph</a>
     </nav>
-      <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Toggle navigation">☰</button>
+    <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Toggle navigation">☰</button>
   </header>
 
   <!-- ======== MAIN CONTENT ======== -->
@@ -93,7 +106,8 @@
             <button class="btn btn--primary" data-navigate="playground">
               Try it now →
             </button>
-            <p class="text-sm text-secondary" style="margin-top: 1rem;">Used by developers in India, USA, Germany, Japan and 3 other countries</p>
+            <p class="text-sm text-secondary" style="margin-top: 1rem;">Used by developers in India, USA, Germany, Japan
+              and 3 other countries</p>
           </div>
         </div>
       </div>
@@ -103,7 +117,8 @@
     <section id="playground-page" class="page-section">
       <div class="page-header">
         <h2 class="page-header__title"><span role="img" aria-hidden="true">💻</span> Code Playground</h2>
-        <p class="page-header__subtitle">Paste your DSA code in any language — we'll detect the algorithm and visualize it</p>
+        <p class="page-header__subtitle">Paste your DSA code in any language — we'll detect the algorithm and visualize
+          it</p>
       </div>
       <div class="page-body">
         <!-- Sample code buttons -->
@@ -129,7 +144,9 @@
               </div>
             </div>
             <div class="code-editor-body">
-              <textarea id="code-input" class="code-textarea" placeholder="# Paste any DSA code here&#10;# We'll detect and visualize it automatically" spellcheck="false"></textarea>
+              <textarea id="code-input" class="code-textarea"
+                placeholder="# Paste any DSA code here&#10;# We'll detect and visualize it automatically"
+                spellcheck="false"></textarea>
             </div>
           </div>
 
@@ -146,7 +163,8 @@
                 <div class="empty-state">
                   <div class="empty-state__icon" role="img" aria-hidden="true">💻</div>
                   <div class="empty-state__title">Paste Your Code</div>
-                  <div class="empty-state__desc">Paste any DSA code on the left and click "Detect &amp; Visualize" to see the algorithm animation.</div>
+                  <div class="empty-state__desc">Paste any DSA code on the left and click "Detect &amp; Visualize" to
+                    see the algorithm animation.</div>
                 </div>
               </div>
             </div>
@@ -162,17 +180,20 @@
           <div class="glass-card glass-card--static feature-card">
             <div class="feature-card__icon" role="img" aria-label="Eye icon">👁️</div>
             <div class="feature-card__title">Visual Learning</div>
-            <div class="feature-card__desc">See every swap, comparison, and traversal animated step by step with color-coded states.</div>
+            <div class="feature-card__desc">See every swap, comparison, and traversal animated step by step with
+              color-coded states.</div>
           </div>
           <div class="glass-card glass-card--static feature-card">
             <div class="feature-card__icon" role="img" aria-label="Laptop icon">💻</div>
             <div class="feature-card__title">Code Playground</div>
-            <div class="feature-card__desc">Paste your code in any language. We detect the algorithm and visualize its execution.</div>
+            <div class="feature-card__desc">Paste your code in any language. We detect the algorithm and visualize its
+              execution.</div>
           </div>
           <div class="glass-card glass-card--static feature-card">
             <div class="feature-card__icon" role="img" aria-label="Lightning icon">⚡</div>
             <div class="feature-card__title">Full Control</div>
-            <div class="feature-card__desc">Play, pause, step forward/back, and adjust speed. Learn at your own pace.</div>
+            <div class="feature-card__desc">Play, pause, step forward/back, and adjust speed. Learn at your own pace.
+            </div>
           </div>
         </div>
 
@@ -189,11 +210,13 @@
               </div>
             </div>
             <div class="category-card__title">Sorting Algorithms</div>
-            <div class="category-card__desc">Bubble, Selection, Insertion, Merge, and Quick Sort with animated bar charts.</div>
+            <div class="category-card__desc">Bubble, Selection, Insertion, Merge, and Quick Sort with animated bar
+              charts.</div>
             <span class="category-card__arrow">→</span>
           </div>
           <div class="glass-card category-card" data-page="searching" id="card-searching">
-            <div class="category-card__icon category-card__icon--searching" role="img" aria-label="Magnifying glass icon">🔍</div>
+            <div class="category-card__icon category-card__icon--searching" role="img"
+              aria-label="Magnifying glass icon">🔍</div>
             <div class="category-card__title">Searching Algorithms</div>
             <div class="category-card__desc">Linear Search and Binary Search with highlighted array traversal.</div>
             <span class="category-card__arrow">→</span>
@@ -220,7 +243,8 @@
               </div>
             </div>
             <div class="category-card__title">Binary Search Tree</div>
-            <div class="category-card__desc">Insert, delete, search, and traverse (inorder, preorder, postorder, level-order).</div>
+            <div class="category-card__desc">Insert, delete, search, and traverse (inorder, preorder, postorder,
+              level-order).</div>
             <span class="category-card__arrow">→</span>
           </div>
           <div class="glass-card category-card" data-page="graph" id="card-graph">
@@ -234,7 +258,8 @@
               </div>
             </div>
             <div class="category-card__title">Graph Algorithms</div>
-            <div class="category-card__desc">BFS, DFS, and Dijkstra's shortest path on interactive graph visualizations.</div>
+            <div class="category-card__desc">BFS, DFS, and Dijkstra's shortest path on interactive graph visualizations.
+            </div>
             <span class="category-card__arrow">→</span>
           </div>
         </div>
@@ -309,8 +334,11 @@
           </div>
         </div>
       </div>
-      <a href="#searching-page" class="nav-next-link" style="display:block; text-align:center; margin-top:2rem; color:var(--text-secondary); text-decoration:none;">Next: Searching Algorithms →</a>
-      </div></section>
+      <a href="#searching-page" class="nav-next-link"
+        style="display:block; text-align:center; margin-top:2rem; color:var(--text-secondary); text-decoration:none;">Next:
+        Searching Algorithms →</a>
+      </div>
+    </section>
 
     <!-- ======== SEARCHING PAGE ======== -->
     <section id="searching-page" class="page-section">
@@ -371,8 +399,11 @@
           </div>
         </div>
       </div>
-      <a href="#stack-queue-page" class="nav-next-link" style="display:block; text-align:center; margin-top:2rem; color:var(--text-secondary); text-decoration:none;">Next: Stack & Queue →</a>
-      </div></section>
+      <a href="#stack-queue-page" class="nav-next-link"
+        style="display:block; text-align:center; margin-top:2rem; color:var(--text-secondary); text-decoration:none;">Next:
+        Stack & Queue →</a>
+      </div>
+    </section>
 
     <!-- ======== STACK & QUEUE PAGE ======== -->
     <section id="stack-queue-page" class="page-section">
@@ -423,8 +454,11 @@
         <div class="step-description" id="sq-message">Choose <strong>Stack</strong> or <strong>Queue</strong>, enter a
           value, and perform operations.</div>
       </div>
-      <a href="#linked-list-page" class="nav-next-link" style="display:block; text-align:center; margin-top:2rem; color:var(--text-secondary); text-decoration:none;">Next: Linked List →</a>
-      </div></section>
+      <a href="#linked-list-page" class="nav-next-link"
+        style="display:block; text-align:center; margin-top:2rem; color:var(--text-secondary); text-decoration:none;">Next:
+        Linked List →</a>
+      </div>
+    </section>
 
     <!-- ======== LINKED LIST PAGE ======== -->
     <section id="linked-list-page" class="page-section">
@@ -481,8 +515,11 @@
         <div class="step-description" id="ll-message" style="margin-top: 0.5rem">Linked list initialized with sample
           data.</div>
       </div>
-      <a href="#tree-page" class="nav-next-link" style="display:block; text-align:center; margin-top:2rem; color:var(--text-secondary); text-decoration:none;">Next: Binary Search Tree →</a>
-      </div></section>
+      <a href="#tree-page" class="nav-next-link"
+        style="display:block; text-align:center; margin-top:2rem; color:var(--text-secondary); text-decoration:none;">Next:
+        Binary Search Tree →</a>
+      </div>
+    </section>
 
     <!-- ======== TREE PAGE ======== -->
     <section id="tree-page" class="page-section">
@@ -538,8 +575,11 @@
         <div class="step-description" id="tree-step-desc">Insert values or select a traversal to begin.</div>
         <div class="step-description" id="tree-message" style="margin-top: 0.5rem">Sample BST initialized.</div>
       </div>
-      <a href="#graph-page" class="nav-next-link" style="display:block; text-align:center; margin-top:2rem; color:var(--text-secondary); text-decoration:none;">Next: Graph Algorithms →</a>
-      </div></section>
+      <a href="#graph-page" class="nav-next-link"
+        style="display:block; text-align:center; margin-top:2rem; color:var(--text-secondary); text-decoration:none;">Next:
+        Graph Algorithms →</a>
+      </div>
+    </section>
 
     <!-- ======== GRAPH PAGE ======== -->
     <section id="graph-page" class="page-section">
@@ -560,7 +600,8 @@
             <select id="graph-start"></select>
           </div>
           <button class="btn btn--primary btn--sm" id="graph-start-btn">▶ Run Algorithm</button>
-          <button class="btn btn--secondary btn--sm" id="graph-regenerate"><span role="img" aria-hidden="true">🎲</span> Reset Graph</button>
+          <button class="btn btn--secondary btn--sm" id="graph-regenerate"><span role="img" aria-hidden="true">🎲</span>
+            Reset Graph</button>
           <p class="text-sm text-secondary" id="graph-algo-desc" style="margin-left: auto; max-width: 300px;"></p>
         </div>
 
@@ -591,31 +632,34 @@
         <div class="step-description" id="graph-step-desc">Select a start node and algorithm, then press <strong>Run
             Algorithm</strong>.</div>
       </div>
-      <a href="#playground-page" class="nav-next-link" style="display:block; text-align:center; margin-top:2rem; color:var(--text-secondary); text-decoration:none;">Try the Code Playground →</a>
-      </div></section>
+      <a href="#playground-page" class="nav-next-link"
+        style="display:block; text-align:center; margin-top:2rem; color:var(--text-secondary); text-decoration:none;">Try
+        the Code Playground →</a>
+      </div>
+    </section>
 
-    
+
 
   </main>
 
   <!-- Scripts -->
   <!-- CodeMirror -->
-  
-  
-  
-  
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
 
-<script type="application/ld+json">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
